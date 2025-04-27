@@ -1,3 +1,6 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -15,6 +18,14 @@ public class Task {
         this.status = Status.TODO;
         this.creationDate = LocalDateTime.now();
         this.updateDate = LocalDateTime.now();
+    }
+
+    public Task(int id, String description, Status status, LocalDateTime creationDate, LocalDateTime updateDate) {
+        this.id = id;
+        this.description = description;
+        this.status = status;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
     }
 
     public int getId() {
@@ -83,6 +94,21 @@ public class Task {
                 '}';
     }
 
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("description", description);
+        jsonObject.put("status", status);
+        jsonObject.put("creationDate", creationDate);
+        jsonObject.put("updateDate", updateDate);
+        return jsonObject;
+    }
+
+    public JSONArray toJSONArray() {
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put(toJSON());
+        return jsonArray;
+    }
 
 
 }
