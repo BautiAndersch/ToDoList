@@ -1,3 +1,3 @@
 public enum Status {
-    TODO,inPROGRESS,DONE;
+    TODO,inPROGRESS,DONE
 }
